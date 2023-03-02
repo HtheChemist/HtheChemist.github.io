@@ -155,17 +155,19 @@ enableMenu: false
 ### Saguenay-Lac-St-Jean
 :::
 
-Jonquière {.fragment .fade-up} 
+Jonquière (27 membres) {.fragment .fade-up} 
 
-Chicoutimi {.fragment .fade-up} 
+Chicoutimi (36 membres) {.fragment .fade-up} 
 
-La Baie {.fragment .fade-up} 
+La Baie (22 membres) {.fragment .fade-up} 
 
-Alma {.fragment .fade-up} 
+Alma (25 membres) {.fragment .fade-up} 
 
-Lac-St-Jean Est {.fragment .fade-up} 
+Lac-St-Jean Est (26 membres) {.fragment .fade-up} 
 
-Chibougamau {.fragment .fade-up}
+Roberval (23 membres) {.fragment .fade-up} 
+
+Chibougamau (23 membres) {.fragment .fade-up}
 
 ---
 
