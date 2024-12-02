@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsorship Plans</title>
+  <style>
+    @font-face {
+      font-family: 'KnockoutHTF67';
+      src: url('path/to/KnockoutHTF67.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'KnockoutHTF69';
+      src: url('path/to/KnockoutHTF69.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'AvenirNextLTPro';
+      src: url('path/to/AvenirNextLTPro.woff') format('woff');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'AvenirNextLTProRegular';
+      src: url('path/to/AvenirNextLTProRegular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'AvenirNextLTProRegular', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #003874;
+      color: #000000;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 0px 0px 8px 8px;
+      overflow: hidden;
+    }
+
+    .tab-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: transparent;
+    }
+
+    .tabs {
+      display: flex;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .tab {
+      flex: auto;
+      padding: 10px;
+      text-align: center;
+      font-family: 'AvenirNextLTProRegular', Arial, sans-serif;
+      background-color: rgba(248, 248, 248, 0.48);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .tab.active {
+      background-color: #ffffff;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    h1 {
+      text-align: center;
+      color: #003874;
+      font-family: 'KnockoutHTF67', Arial, sans-serif;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      text-align: center;
+      color: #003874;
+      font-family: 'KnockoutHTF69', Arial, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .plans {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .plan {
+      flex: 1;
+      min-width: 220px;
+      border: 1px solid #A9A8A9;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      transition: transform 0.3s ease-in-out;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .plan.gold {
+      border: 4px solid #B49759;
+    }
+
+    .plan.full {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .plans-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .plan:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .plan.full:hover {
+      transform: scale(1.025);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .plan h3 {
+      font-size: 1.5em;
+      color: #003874;
+      font-family: 'KnockoutHTF67', Arial, sans-serif;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-size: 2em;
+      color: #B49759;
+      margin: 10px 0;
+      font-family: 'AvenirNextLTPro', Arial, sans-serif;
+    }
+
+    .description {
+      font-size: 1.25em;
+      margin: 10px 0;
+      font-family: 'AvenirNextLTPro', Arial, sans-serif;
+    }
+
+    .dispo {
+      font-size: 0.75em;
+      margin-top: 0;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      font-family: 'AvenirNextLTProRegular', Arial, sans-serif;
+    }
+
+    .features li {
+      padding: 8px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .addendum {
+      font-size: 1em;
+      margin-top: 20px;
+      font-family: 'AvenirNextLTProRegular', Arial, sans-serif;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      background-color: #003874;
+      color: white;
+      border-radius: 4px;
+      font-family: 'AvenirNextLTProBold', Arial, sans-serif;
+    }
+
+    .slim {
+      padding: 5px 10px;
+      margin-top: auto;
+    }
+
+    .button:hover {
+      background-color: #99CAEA;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table th, table td {
+      border: 1px solid #A9A8A9;
+      padding: 10px;
+      text-align: center;
+      font-family: 'AvenirNextLTProRegular', Arial, sans-serif;
+    }
+
+    table th {
+      background-color: #003874;
+      color: white;
+      font-family: 'KnockoutHTF69', Arial, sans-serif;
+      text-transform: uppercase;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+      background-color: #e0f7ff;
+      transition: background-color 0.3s ease;
+    }
+
+    .checkmark {
+      color: green;
+      font-size: 1.5em;
+    }
+
+    .detail {
+      font-size: 1em;
+      margin: 10px 0;
+      font-family: 'AvenirNextLTPro', Arial, sans-serif;
+      padding: 10px;
+      text-align: justify;
+      border: 1px solid #A9A8A9;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+
+    .exhausted {
+      background-color: lightgray;
+      color: darkgray;
+    }
+
+    .exhausted .button {
+      color: darkgray;
+      background-color: gray;
+    }
+
+    .exhausted .price {
+      color: darkgray;
+    }
+
+    .exhausted h3 {
+      color: darkgray;
+    }
+
+    .nondispo {
+      color: #484848;
+      position: absolute;
+      font-weight: bold;
+      font-size: 6em;
+      transform: rotate(-45deg) translate(-20%, 100%);
+    }
+
+    @media print {
+      body {
+        background-color: white;
+        color: black;
+      }
+
+      .container {
+        box-shadow: none;
+        border: none;
+      }
+
+      .button {
+        display: none;
+      }
+    }
+  </style>
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("tab");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
+</head>
+<body>
+<div class="tab-container">
+  <div class="tabs">
+    <div class="tab active" onclick="openTab(event, 'plans')">Plans de Commandite</div>
+    <div class="tab" onclick="openTab(event, 'comparison')">Comparaison des Forfaits</div>
+  </div>
+  <div id="plans" class="tab-content active container">
+    <h1>Kiwanis Jonquière - Levée de Fonds 2025 - Plan de Commandite</h1>
+    <div class="plans">
+      <div class="plan gold full">
+        <h3>Présentateur Associé</h3>
+        <p class="dispo">(1 disponible)</p>
+        <p class="description">Soyez partenaire dans la réussite des jeunes de Jonquière.</p>
+        <p class="price">$10 000</p>
+        <p class="detail">Affichez votre marque aux côtés de l’événement, en soutenant la jeunesse de Jonquière. En tant que Présentateur Associé, le nom de votre entreprise sera associé à celui de l’événement, assurant une visibilité sans égal. Profitez d’une reconnaissance privilégiée avec votre logo affiché à l’entrée et lors du souper, d’un temps de parole pour engager directement les participants, et de la projection de vos supports promotionnels tout au long de la soirée. Partagez cette expérience unique avec 10 billets exclusifs et démontrez votre engagement envers le leadership communautaire.</p>
+        <ul class="features">
+          <li>Ajout du nom de l'entreprise au nom de l'évènement.</li>
+          <li>Affichage priviliégié durant le souper et à l'acceuil.</li>
+          <li>Temps de paroles au début de l'évènement.</li>
+          <li>Projection de materiel promotionel de l'entreprise durant l'évènement.</li>
+          <li>10 Billets.</li>
+        </ul>
+        <a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button">Choisir cette option</a>
+      </div>
+      <div class="plans-row">
+        <div class="plan">
+          <h3>Salon des Vices</h3>
+          <p class="dispo">(1 disponible)</p>
+          <p class="description">Ayez votre propre salle.</p>
+          <p class="price">$5 000</p>
+          <p class="detail">Parrainez un salon exclusif qui portera votre marque. En tant que Salon des Vices, votre nom sera mis en avant à l’entrée et à la sortie du bar, offrant une ambiance inoubliable. Bénéficiez d’une visibilité privilégiée dans la zone bar et de la projection de votre logo durant l’événement. Invitez vos invités avec 10 billets pour une expérience mémorable dans un espace aux couleurs de votre marque.</p>
+          <ul class="features">
+            <li>Ajout du nom de l'entreprise à l'entré et à la sortie du bar.</li>
+            <li>Affichage priviliégié dans la zone bar.</li>
+            <li>Projection du logo de l'entreprise durant l'évènement.</li>
+            <li>10 billets.</li>
+          </ul>
+          <a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button">Choisir cette option</a>
+        </div>
+        <div class="plan">
+          <h3>Section de Salle</h3>
+          <p class="dispo">(3/4 disponible)</p>
+          <p class="description">Affichez vos couleurs.</p>
+          <p class="price">$3 000</p>
+          <p class="detail">Marquez votre présence dans une section dédiée de la salle, portant fièrement le nom de votre entreprise. Ce parrainage Section de Salle vous offre une visibilité de premier plan dans l’un des espaces principaux, avec une projection de logo tout au long de la soirée. Rejoignez la célébration avec 10 billets et ajoutez vos couleurs à la décoration, assurant une forte présence de votre marque.</p>
+          <ul class="features">
+            <li>Désignation d'une section de la salle au nom de l'entreprise.</li>
+            <li>Affichage priviliégié dans une des sections de la salle et sur les plans de salle.</li>
+            <li>Projection du logo de l'entreprise en continue durant l'évènement.</li>
+            <li>10 billets</li>
+          </ul>
+          <a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button">Choisir cette option</a>
+        </div>
+      </div>
+      <div class="plans-row">
+        <div class="plan exhausted">
+          <p class="nondispo">Épuisé</p>
+          <h3>Photo</h3>
+          <p class="dispo">(1 disponible)</p>
+          <p class="description">Créez des souvenir.</p>
+          <p class="price">$1 000</p>
+          <p class="detail">Associez votre marque aux souvenirs durables. En tant que Commanditaire Photo, votre logo apparaîtra sur toutes les photos de l’événement, garantissant une visibilité chaque fois que les participants se remémoreront la soirée. Votre soutien sera gravé dans les mémoires.</p>
+          <ul class="features">
+            <li>Ajout du logo de l'entreprise aux photos de la soirée.</li>
+            <li>Projection du logo de l'entreprise durant l'évènement.</li>
+            <li>Affichage de l'entreprise à l'acceuil.</li>
+          </ul>
+          <a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button">Choisir cette option</a>
+        </div>
+        <div class="plan">
+          <h3>Partenaires</h3>
+          <p class="dispo">(30 disponible)</p>
+          <p class="description">Partagez votre engagement.</p>
+          <p class="price">$2 000</p>
+          <p class="detail">Soutenez cet événement en tant que Partenaire et laissez briller votre présence. Votre logo sera affiché à l’entrée et projeté tout au long de l’événement, soulignant votre engagement envers la communauté. De plus, avec 10 billets, vous serez au cœur de la célébration, partageant votre soutien pour le talent de la jeunesse de Jonquière.</p>
+          <ul class="features">
+            <li>Projection du logo de l'entreprise durant l'évènement.</li>
+            <li>Affichage de l'entreprise à l'acceuil.</li>
+            <li>10 Billets</li>
+          </ul>
+          <a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button">Choisir cette option</a>
+        </div>
+      </div>
+    </div>
+    <p class="addendum">Tous les commanditaires seront nommés au courant de la soirée dans les remerciements.</p>
+    <p class="addendum">Les commanditaires possédant les plans suivant: Présentateur Associé, Salon des Vices, et Section
+      de Salle, seront invités, s'ils le désirent, à influencer la décoration de la salle pour qu'elle soit aux couleurs
+      de leur entreprise.</p>
+  </div>
+  <div id="comparison" class="tab-content container">
+    <h2>Comparaison des Forfaits de Commandite</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Critère</th>
+        <th>Présentateur Associé</th>
+        <th>Salon des Vices</th>
+        <th>Section de Salle</th>
+        <th>Partenaires</th>
+        <th>Photo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Prix</td>
+        <td>$10 000</td>
+        <td>$5 000</td>
+        <td>$3 000</td>
+        <td>$2 000</td>
+        <td>$1 000</td>
+      </tr>
+      <tr>
+        <td>Billets</td>
+        <td>10</td>
+        <td>10</td>
+        <td>10</td>
+        <td>10</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Affichage des logos durant la soirée</td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td><span class="checkmark">&#10003;</span></td>
+      </tr>
+      <tr>
+        <td>Matériel Promotionnel</td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Décoration de la salle</td>
+        <td>Acceuil</td>
+        <td>Salon des vices</td>
+        <td>Section de la salle principale</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Temps de Parole</td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Association de l'entreprise à l'évènement</td>
+        <td><span class="checkmark">&#10003;</span></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Logo sur Photos</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><span class="checkmark">&#10003;</span></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button slim">Choisir</a></td>
+        <td><a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button slim">Choisir</a></td>
+        <td><a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button slim">Choisir</a></td>
+        <td><a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button slim">Choisir</a></td>
+        <td><a href="https://www.zeffy.com/fr-CA/ticketing/soiree-vin-et-fromages-kiwanis-jonquiere--2025" class="button slim">Choisir</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
